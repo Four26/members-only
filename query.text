@@ -1,0 +1,18 @@
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    firstname VARCHAR (255),
+    lastname VARCHAR (255),
+    username VARCHAR (255),
+    password VARCHAR (255),
+    membership_status BOOLEAN DEFAULT FALSE,
+    is_admin BOOLEAN DEFAULT FALSE
+);
+
+//////
+CREATE TABLE messages (
+    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    text VARCHAR (255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_id INTEGER,
+    FOREIGN KEY (user_id) REFERENCES users (id)
+);
